@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Prototype.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player/player.jpg" type="Texture" id=2]
+[ext_resource path="res://Objects/AutoDirt64.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.1723, 31.89 )
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 411.949, 220.041 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="BeegDirt" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( -65535, 1, 196613, 0, 1, 5, 16, 1, 5, 65536, 1, 131077, 65552, 1, 65541, 131073, 1, 5, 131088, 1, 65541, 196609, 1, 65542, 196610, 1, 196609, 196611, 1, 196610, 196617, 1, 196608, 196618, 1, 196610, 196624, 1, 65541, 327679, 1, 5, 262155, 1, 196608, 262156, 1, 196609, 262157, 1, 196610, 262160, 1, 65541, 393215, 1, 65541, 327686, 1, 196613, 327695, 1, 6, 327696, 1, 65543, 458751, 1, 131077, 393230, 1, 196608, 393231, 1, 65543, 458752, 1, 196608, 458753, 1, 196609, 458754, 1, 7, 458764, 1, 5, 458769, 1, 5, 524290, 1, 65542, 524291, 1, 196609, 524292, 1, 7, 524300, 1, 8, 524301, 1, 2, 524305, 1, 65541, 589828, 1, 65542, 589829, 1, 196609, 589830, 1, 196609, 589831, 1, 196609, 589832, 1, 196609, 589833, 1, 196609, 589834, 1, 196609, 589835, 1, 196609, 589836, 1, 65544, 589837, 1, 65538, 589841, 1, 131077, 655374, 1, 196608, 655375, 1, 196610 )
