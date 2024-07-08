@@ -1,6 +1,6 @@
 extends Edible
 
-export var MAX_SPEED = 200
+@export var MAX_SPEED = 200
 var ACELLERATION = 3000
 var motion = Vector2.ZERO
 
@@ -18,7 +18,9 @@ func _physics_process(delta):
 		apply_friction((ACELLERATION*2/3) * delta)
 	else:
 		apply_movement(axis * ACELLERATION * delta)
-	motion = move_and_slide(motion)
+	set_velocity(motion)
+	move_and_slide()
+	motion = velocity
 	
 	for body in $EatingRoom.get_overlapping_bodies():
 		if body.is_in_group("Edible"):
@@ -40,7 +42,7 @@ func apply_friction(amount):
 
 func apply_movement(acceleration):
 	motion += acceleration
-	motion = motion.clamped(MAX_SPEED)
+	motion = motion.limit_length(MAX_SPEED)
 
 func feed_on(opposing):
 	if mass >= opposing.mass:

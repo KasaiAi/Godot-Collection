@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var foodCell = preload("res://Objects/Food.tscn")
-onready var foodContainer = get_node("FoodContainer")
+@onready var foodCell = preload("res://Objects/Food.tscn")
+@onready var foodContainer = get_node("FoodContainer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +10,6 @@ func _ready():
 
 func spawn_cells(amount):
 	for _i in range(amount):
-		var C = foodCell.instance()
+		var C = foodCell.instantiate()
 		foodContainer.add_child(C)
-		C.position = Vector2(rand_range(-990, 990), rand_range(-990, 990))
+		C.position = Vector2(randf_range(-990, 990), randf_range(-990, 990))
