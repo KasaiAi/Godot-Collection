@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://syfx38a0lpsl"]
+
+[ext_resource type="PackedScene" uid="uid://b2hb3w5sj3bbq" path="res://Assets/spike.glb" id="1_jfp5y"]
+
+[node name="Spike" type="Node3D" groups=["spike"]]
+
+[node name="Mesh" parent="." instance=ExtResource("1_jfp5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.571472, 0)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdyeod1mg70ju"]
+
+[ext_resource type="PackedScene" uid="uid://cvbu57ijjkg51" path="res://Assets/truck.glb" id="1_dxh6i"]
+[ext_resource type="Script" path="res://Scripts/truck.gd" id="2_8h8oq"]
+[ext_resource type="PackedScene" uid="uid://wnyvxbs7ibr1" path="res://Assets/grinder.glb" id="3_cacso"]
+
+[node name="Truck" instance=ExtResource("1_dxh6i")]
+script = ExtResource("2_8h8oq")
+
+[node name="Grinder" parent="." index="2" instance=ExtResource("3_cacso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161397, 1.88992)

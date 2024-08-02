@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://vivgytv4defd"]
+
+[ext_resource type="PackedScene" uid="uid://cdyeod1mg70ju" path="res://Objects/truck.tscn" id="1_fnabf"]
+
+[node name="World" type="Node3D"]
+
+[node name="Lights" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.366502, -0.472222, 0.801675, 0, 0.861629, 0.507538, -0.930417, 0.186014, -0.315789, 7.09201, 4.24114, -1.45954)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.642788, -0.380124, 0.665079, 0, 0.868199, 0.496217, -0.766044, -0.318962, 0.558067, 6.96743, 4.84483, 5.30761)
+current = true
+
+[node name="truck" parent="." instance=ExtResource("1_fnabf")]
+
+[node name="Spike +" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Spike +"
+
+[node name="Ring +" type="Button" parent="."]
+offset_top = 48.0
+offset_right = 8.0
+offset_bottom = 56.0
+text = "Ring +"
+
+[node name="Size +" type="Button" parent="."]
+offset_top = 92.0
+offset_right = 52.0
+offset_bottom = 123.0
+text = "Size +"
+
+[connection signal="button_up" from="Spike +" to="truck" method="add_spike"]
+[connection signal="button_up" from="Ring +" to="truck" method="add_ring"]
+[connection signal="button_up" from="Size +" to="truck" method="add_size"]

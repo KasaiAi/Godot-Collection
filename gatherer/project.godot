@@ -11,14 +11,24 @@ config_version=5
 [application]
 
 config/name="Gatherer"
+<<<<<<< Updated upstream
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
+=======
+run/main_scene="res://Scenes/world.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://icon.svg"
+>>>>>>> Stashed changes
 
-[physics]
+[display]
 
+<<<<<<< Updated upstream
 common/enable_pause_aware_picking=true
 
 [rendering]
 
 environment/defaults/default_environment="res://default_env.tres"
+=======
+mouse_cursor/size/viewport_width=1152
+>>>>>>> Stashed changes
