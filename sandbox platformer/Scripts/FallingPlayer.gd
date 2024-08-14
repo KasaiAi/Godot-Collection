@@ -12,16 +12,18 @@ func _physics_process(_delta):
 	$Sprite.play("Fall")
 	rotate(-0.4)
 	var circle = CircleShape2D.new()
+	circle.radius = 10
 	$Body.shape = circle
 	$Base.disabled = true
-	circle.radius = 10
 #	Whacking sfx
 #	On timer: screen fade to message
-#	Message: "You broke your neck on the fall... (It was a long way down)"
+#	Message: "You broke your neck on the fall..."
 #	>Whoops
-#	Message2: "The curse of quitters claims another... (Only a coward runs from adventure!)"
+#	Message2: "You had to climb those stairs, you know..."
+#	>It was a long way down
+#	Message3: "There's no time for hesitation!"
 #	>Be brave
-#	Message3: "Why would you turn back after coming this far? (You had to climb those stairs, you know)"
+#	Message4: "You realize it was all a dream..."
 #	>Adventure calls
 		
 	motion = move_and_slide(motion, UP)

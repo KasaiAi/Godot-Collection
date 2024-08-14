@@ -8,11 +8,11 @@ const ACCELERATION = 50
 const MAX_SPEED = 250
 const JUMP_HEIGHT = -500
 
+var friction = false
 var motion = Vector2()
 
 func _physics_process(_delta): 
 	motion.y += GRAVITY
-	var friction = false
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
