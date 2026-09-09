@@ -1,4 +1,4 @@
-extends Edible
+extends CharacterBody2D
 
 @export var MAX_SPEED = 200
 var ACELLERATION = 3000
@@ -8,25 +8,35 @@ var TOP_DOWN = Vector2.ZERO
 
 var debugVar = 0 #troubleshooting
 
+var mass = 1
+
 func _ready():
-	mass = 1
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var axis = get_input_axis()
 	if axis == Vector2.ZERO:
-		apply_friction((ACELLERATION*2/3) * delta)
+		apply_friction((ACELLERATION) * delta)
 	else:
+		apply_friction((ACELLERATION*2/3) * delta)
 		apply_movement(axis * ACELLERATION * delta)
 	set_velocity(motion)
 	move_and_slide()
-	motion = velocity
 	
 	for body in $EatingRoom.get_overlapping_bodies():
-		if body.is_in_group("Edible"):
+		if body.is_in_group("Edible") and body != self:
 			feed_on(body)
 	
-#	print(debugVar)
+	if mass <= 0.2:
+		scale = Vector2(0, 0)
+		mass = 1
+		
+		var popup = load("res://Objects/game_over.tscn").instantiate()
+		popup.lose()
+		add_child(popup)
+		
+		get_tree().paused = true
 
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -45,16 +55,15 @@ func apply_movement(acceleration):
 	motion = motion.limit_length(MAX_SPEED)
 
 func feed_on(opposing):
-	if mass >= opposing.mass:
-		mass += 0.05
+	if opposing.is_in_group("Foodible"):
+		mass += 0.02
+		opposing.queue_free()
+	elif mass >= opposing.mass:
+		mass += 0.01
 		opposing.mass -= 0.1
-	else:
-		mass -= 0.05
-		opposing.mass += 0.1
 	
-	print(self.name,"'s mass is now ", mass)
+	scale = Vector2(mass, mass)
+	opposing.scale = Vector2(opposing.mass, opposing.mass)
+	
+#	print("Player's mass is now ", mass)
 #	print("Cell mass is now ", opposing.mass)
-
-#func _on_EatingRoom_body_entered(body):
-#	if body.is_in_group("Edible"):
-#		feed_on(body)

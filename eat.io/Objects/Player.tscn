@@ -10,7 +10,7 @@ radius = 24.4319
 [sub_resource type="CircleShape2D" id="2"]
 radius = 25.2826
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Edible", "player"]]
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1")
 

@@ -1,12 +1,7 @@
 extends CharacterBody2D
-class_name Edible
 
-var mass #troubleshooting
+var mass = 0.3
 
-func _physics_process(_delta):
-	if mass <= 0.2:
-		queue_free()
-#		If queued object is player, stop processes and display
-#		GAME OVER
-
+func _ready():
+	randomize()
 	scale = Vector2(mass, mass)
