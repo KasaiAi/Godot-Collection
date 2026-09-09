@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfmvgsnte5cg"]
+
+[ext_resource type="Script" uid="uid://8r14p3viu7ct" path="res://Scripts/world.gd" id="1_8j60k"]
+[ext_resource type="Texture2D" uid="uid://c56wo0j3dy86s" path="res://Assets/Sprites/background.png" id="1_go701"]
+[ext_resource type="PackedScene" uid="uid://qyk8s34v1wmc" path="res://Objects/player.tscn" id="2_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://ds27dtjanuci4" path="res://Assets/Sprites/ammo_empty.png" id="4_fo5ed"]
+[ext_resource type="Texture2D" uid="uid://g7lt8afmjgyv" path="res://Assets/Sprites/ammo_full.png" id="5_5ukr8"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_8j60k")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(300, 300)
+repeat_times = 10
+
+[node name="Background" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_go701")
+
+[node name="Player" parent="." instance=ExtResource("2_5a7ea")]
+z_index = 1
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="TargetContainer" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AmmoBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 499.0
+offset_top = 585.0
+offset_right = 649.0
+offset_bottom = 615.0
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("4_fo5ed")
+texture_progress = ExtResource("5_5ukr8")
+
+[connection signal="fire" from="Player" to="." method="_on_player_fire"]
+[connection signal="updateAmmo" from="Player" to="." method="_update_ammo"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_spawn_check"]

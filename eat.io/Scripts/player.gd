@@ -52,7 +52,7 @@ func feed_on(opposing):
 		mass -= 0.05
 		opposing.mass += 0.1
 	
-	print("Player's mass is now ", mass)
+	print(self.name,"'s mass is now ", mass)
 #	print("Cell mass is now ", opposing.mass)
 
 #func _on_EatingRoom_body_entered(body):

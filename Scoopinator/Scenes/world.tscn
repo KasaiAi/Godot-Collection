@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgre1yn7q75i4"]
+
+[ext_resource type="PackedScene" uid="uid://c2wprxhfojtss" path="res://Assets/scooper.glb" id="1_seiyb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_krh0a"]
+
+[node name="World" type="Node3D"]
+
+[node name="scoop" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_krh0a")
+
+[node name="scooper" parent="." instance=ExtResource("1_seiyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09001, 0, 0.181076)

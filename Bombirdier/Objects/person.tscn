@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsww62hcm17e8"]
+
+[ext_resource type="Script" uid="uid://dje6kfmf2x0eg" path="res://Objects/person.gd" id="1_gm54h"]
+[ext_resource type="Texture2D" uid="uid://dn33cuynf2fr" path="res://Assets/Sprites/target.png" id="1_gqdnl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gm54h"]
+radius = 28.0
+
+[node name="Person" type="CharacterBody2D" groups=["target"]]
+collision_mask = 0
+script = ExtResource("1_gm54h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gqdnl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gm54h")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-25.090908, -24, 50.181816, 48)
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_stage_return"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_stage_exit"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_killtimer_timeout"]

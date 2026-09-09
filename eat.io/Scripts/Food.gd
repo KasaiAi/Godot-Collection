@@ -4,7 +4,7 @@ class_name Edible
 var mass #troubleshooting
 
 func _physics_process(_delta):
-	if mass <= 0.1:
+	if mass <= 0.2:
 		queue_free()
 #		If queued object is player, stop processes and display
 #		GAME OVER

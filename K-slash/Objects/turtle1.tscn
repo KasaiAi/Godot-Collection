@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccsys835qwshu"]
+
+[ext_resource type="Script" path="res://Objects/turtle1.gd" id="1_6lhqt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8we0k"]
+radius = 15.0
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(439, 179)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6lhqt")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8we0k")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(17, 0)
+target_position = Vector2(0, 25)
